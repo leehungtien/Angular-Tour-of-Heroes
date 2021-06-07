@@ -26,7 +26,7 @@ export class HeroesComponent implements OnInit {
   }
 
   // Use service to help retrieve data instead of importing straight from mock data
-  getHeroes(): void{
-    this.heroes = this.heroService.getHeroes();
+  getHeroes(): void {
+    this.heroService.getHeroes().subscribe(heroes => this.heroes = heroes);
   }
 }
