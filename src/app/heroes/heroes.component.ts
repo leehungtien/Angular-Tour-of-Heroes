@@ -1,3 +1,4 @@
+import { MessageService } from './../message.service';
 import { HeroService } from './../hero.service';
 import { Component, OnInit, NgModule } from '@angular/core';
 import { Hero } from '../hero';
@@ -8,21 +9,17 @@ import { Hero } from '../hero';
   styleUrls: ['./heroes.component.css']
 })
 export class HeroesComponent implements OnInit {
-  hero : Hero = {
-    id: 1,
-    name: 'Windstorm'
-  };
-
   heroes: Hero[] = [];
   selectedHero?: Hero;
-  onSelect(hero: Hero): void{
-    this.selectedHero = hero;
-  }
-
-  constructor(private heroService: HeroService) { }
+  
+  constructor(private heroService: HeroService, private messageService: MessageService) { }
 
   ngOnInit(): void {
     this.getHeroes();
+  }
+
+  onSelect(hero: Hero): void {
+    this.selectedHero = hero;
   }
 
   // Use service to help retrieve data instead of importing straight from mock data
